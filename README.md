@@ -10,5 +10,15 @@
 - Remote Container
 - [Dockerfile](Dockerfile)
 
+- モジュールinstall
+```
+python -m pip install -r requirements.txt
+```
+
 # Twitter Developer Api
 - https://developer.twitter.com/en/docs/twitter-api
+
+# 環境変数
+```bash
+export BEARER_TOKEN="XXXXXXXX"
+```

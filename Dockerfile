@@ -35,3 +35,5 @@ RUN groupadd -g $GID $GROUPNAME && \
     echo "$USERNAME   ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 USER $USERNAME
 ADD .bashrc /home/$USERNAME
+
+ENV PATH $PATH:/home/$USERNAME/.local/bin
