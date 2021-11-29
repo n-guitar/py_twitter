@@ -4,7 +4,6 @@ import urllib
 import json
 
 bearer_token = os.environ.get("BEARER_TOKEN")
-print(bearer_token)
 headers = {"Authorization": f"Bearer {bearer_token}"}
 hash_tag = urllib.parse.quote('#ケバブ')
 url = f'https://api.twitter.com/2/tweets/search/recent?query={hash_tag} -is:retweet'
