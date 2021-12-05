@@ -22,3 +22,9 @@ python -m pip install -r requirements.txt
 ```bash
 export BEARER_TOKEN="XXXXXXXX"
 ```
+
+# try
+* seffing src/prototype1/config.yaml
+```bash
+python src/prototype1/main.py
+```
