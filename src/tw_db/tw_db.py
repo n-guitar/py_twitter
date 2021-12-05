@@ -1,6 +1,6 @@
 import sqlite3
 
-# dbをなければ作成&接続
+# dbをなければ作成&接続し、connectionオブジェクトを返す
 def get_db():
     db = 'twdb.db'
     conn = sqlite3.connect(db)
