@@ -1,0 +1,19 @@
+apiVersion: v1
+metadata:
+  name: config
+user_id: 114446939
+search_word:
+  - "ケバブ"
+query_params:
+  tweet:
+    fields:
+      - author_id
+      - text
+      - source
+      - created_at
+  user:
+    fields:
+      - id
+      - name
+      - username
+  max_results: 100

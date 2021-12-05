@@ -1,20 +1,37 @@
 import json
+import yaml
+import sys
 
 # my package
 from api.pytw_api import TwitterApiClient
 from db.tw_db import TwitterDBClient
 
+# ToDo複数のuser_idをconfigにlistでセットし、dbに保存できるようにする
 def get_tw_data():
-    tw_client = TwitterApiClient()
 
-    user_id = "114446939"
+    # yamlにセットした値を利用
+    try:
+        with open('/workspaces/py_twitter/src/prototype1/config.yaml') as file:
+            obj = yaml.safe_load(file)
+            user_id = obj['user_id']
+            tweet_fields = ",".join(obj['query_params']['tweet']['fields'])
+            user_fields = ",".join(obj['query_params']['user']['fields'])
+            max_results = obj['query_params']['max_results']
+    except Exception as e:
+        print('Exception occurred while loading YAML...', file=sys.stderr)
+        print(e, file=sys.stderr)
+        sys.exit(1)
+
+
+    tw_client = TwitterApiClient()
+    # user_id = "114446939"
     start_date, end_date = tw_client.get_date(10)
     query_params = {
         'start_time': start_date,
         'end_time': end_date,
-        'tweet.fields': 'author_id,text,source,created_at',
-        'user.fields': 'id,name,username',
-        'max_results': 100
+        'tweet.fields': tweet_fields,
+        'user.fields': user_fields,
+        'max_results': max_results
     }
     json_responce = tw_client.get_user_tweets(user_id=user_id, params=query_params)
 
